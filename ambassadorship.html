@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ambassador | Hermela Ashenafi Assefa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.29/dist/lenis.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-obsidian: #0B0B0B;
+            --color-graphite: #1A1A1A;
+            --color-optical-white: #F5F5F0;
+            --color-accent-gold: #D4AF37;
+        }
+        body {
+            background-color: var(--color-obsidian);
+            color: var(--color-optical-white);
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+        }
+        .nav-floating {
+            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 1000; display: flex; gap: 1.5rem;
+            background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 245, 240, 0.1); border-radius: 999px; padding: 0.75rem 1.5rem;
+        }
+        .hero-section {
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 4rem 1.5rem; text-align: center;
+        }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .ambassador-section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .mission-block {
+            background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px; padding: 3rem; margin-bottom: 3rem; line-height: 1.8;
+        }
+        .collaboration-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 2rem;
+        }
+        .collaboration-card {
+            background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(245, 245, 240, 0.1);
+            border-radius: 12px; padding: 2rem;
+        }
+        .collaboration-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-accent-gold); }
+        .collaboration-desc { color: rgba(245, 245, 240, 0.7); line-height: 1.6; }
+        .cta-section {
+            text-align: center; padding: 3rem; background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; margin-top: 3rem;
+        }
+        .cta-btn {
+            display: inline-block; padding: 1rem 2rem;
+            background: var(--color-accent-gold); color: var(--color-obsidian);
+            border: none; border-radius: 4px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: all 0.3s ease; margin-top: 1rem;
+        }
+        .footer { text-align: center; padding: 3rem 1.5rem; color: rgba(245, 245, 240, 0.6); }
+    </style>
+</head>
+<body>
+    <nav class="nav-floating">
+        <a href="index.html" style="text-decoration: none; color: var(--color-optical-white);">Home</a>
+        <a href="ambassadorship.html" style="text-decoration: none; color: var(--color-optical-white);">Ambassador</a>
+    </nav>
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">The Ambassador</h1>
+            <p style="font-size: 1.2rem; color: rgba(245, 245, 240, 0.8);">Miss Tourism Ethiopia & International Cultural Representation</p>
+        </div>
+    </section>
+    <section class="ambassador-section">
+        <div class="mission-block">
+            <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem;">Mission & Vision</h2>
+            <p>As Miss Tourism Ethiopia and international ambassador, I represent Ethiopia on the global stage with unprecedented cultural pride, intellectual depth, and authentic storytelling. My ambassadorship transcends traditional pageantry—it's a diplomatic mission to showcase Ethiopian heritage, celebrate African excellence, and forge meaningful collaborations across cultures, nations, and industries.</p>
+        </div>
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center;">Collaboration Opportunities</h2>
+        <div class="collaboration-grid">
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Cultural Delegations</h3>
+                <p class="collaboration-desc">Lead international delegations celebrating Ethiopian heritage, traditions, and contemporary cultural evolution.</p>
+            </div>
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Diplomatic Missions</h3>
+                <p class="collaboration-desc">Partner with governments and international organizations on cultural exchange and soft power initiatives.</p>
+            </div>
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Brand Partnerships</h3>
+                <p class="collaboration-desc">Strategic collaborations with multinational brands aligned with authentic representation and cultural values.</p>
+            </div>
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Media & Events</h3>
+                <p class="collaboration-desc">High-impact media appearances, speaking engagements, and cultural events on the international stage.</p>
+            </div>
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Educational Initiatives</h3>
+                <p class="collaboration-desc">Mentorship programs and educational partnerships advancing young African talent globally.</p>
+            </div>
+            <div class="collaboration-card">
+                <h3 class="collaboration-title">Innovation Projects</h3>
+                <p class="collaboration-desc">Collaborative ventures merging technology, fashion, and cultural impact for social good.</p>
+            </div>
+        </div>
+        <div class="cta-section">
+            <h3 style="font-size: 1.5rem; font-weight: 600;">Interested in Collaboration?</h3>
+            <p style="color: rgba(245, 245, 240, 0.7); margin-top: 1rem;">Let's create something extraordinary together. Reach out to discuss partnership opportunities.</p>
+            <button class="cta-btn">Get in Touch</button>
+        </div>
+    </section>
+    <footer class="footer"><p>&copy; 2026 Hermela Ashenafi Assefa. All rights reserved.</p></footer>
+    <script>
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>

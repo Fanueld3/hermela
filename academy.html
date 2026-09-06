@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy | Hermela Ashenafi Assefa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.29/dist/lenis.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-obsidian: #0B0B0B;
+            --color-graphite: #1A1A1A;
+            --color-optical-white: #F5F5F0;
+            --color-accent-gold: #D4AF37;
+        }
+        body {
+            background-color: var(--color-obsidian);
+            color: var(--color-optical-white);
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+        }
+        .nav-floating {
+            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 1000; display: flex; gap: 1.5rem;
+            background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 245, 240, 0.1); border-radius: 999px; padding: 0.75rem 1.5rem;
+        }
+        .hero-section {
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 4rem 1.5rem; text-align: center;
+        }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .academy-section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .course-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .course-card {
+            background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(245, 245, 240, 0.1);
+            border-radius: 12px; padding: 2rem; transition: all 0.3s ease;
+        }
+        .course-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(26, 26, 26, 0.8);
+        }
+        .course-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .course-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-accent-gold); }
+        .course-desc { color: rgba(245, 245, 240, 0.7); line-height: 1.6; margin-bottom: 1.5rem; }
+        .course-price { font-size: 1.1rem; font-weight: 600; }
+        .btn-enroll {
+            display: inline-block; padding: 0.75rem 1.5rem;
+            background: var(--color-accent-gold); color: var(--color-obsidian);
+            border: none; border-radius: 4px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; margin-top: 1rem;
+        }
+        .footer { text-align: center; padding: 3rem 1.5rem; color: rgba(245, 245, 240, 0.6); }
+    </style>
+</head>
+<body>
+    <nav class="nav-floating">
+        <a href="index.html" style="text-decoration: none; color: var(--color-optical-white);">Home</a>
+        <a href="academy.html" style="text-decoration: none; color: var(--color-optical-white);">Academy</a>
+    </nav>
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">Academy</h1>
+            <p style="font-size: 1.2rem; color: rgba(245, 245, 240, 0.8);">Empower your journey through mentorship and education</p>
+        </div>
+    </section>
+    <section class="academy-section">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem; text-align: center;">Learning Offerings</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <div class="course-icon">🎓</div>
+                <h3 class="course-title">Masterclass Courses</h3>
+                <p class="course-desc">Deep-dive courses on pageantry preparation, personal branding, and international representation strategies.</p>
+                <p class="course-price">From $49</p>
+                <button class="btn-enroll">Explore Courses</button>
+            </div>
+            <div class="course-card">
+                <div class="course-icon">📚</div>
+                <h3 class="course-title">Free Resources</h3>
+                <p class="course-desc">Download guides, templates, and checklists for aspiring models and pageant participants.</p>
+                <p class="course-price">Free</p>
+                <button class="btn-enroll">Get Resources</button>
+            </div>
+            <div class="course-card">
+                <div class="course-icon">👥</div>
+                <h3 class="course-title">1-on-1 Coaching</h3>
+                <p class="course-desc">Personalized mentorship sessions tailored to your specific goals and aspirations.</p>
+                <p class="course-price">$150/session</p>
+                <button class="btn-enroll">Book Session</button>
+            </div>
+            <div class="course-card">
+                <div class="course-icon">🔍</div>
+                <h3 class="course-title">Portfolio Reviews</h3>
+                <p class="course-desc">Professional feedback and optimization for your comp cards, digitals, and modeling portfolio.</p>
+                <p class="course-price">$99</p>
+                <button class="btn-enroll">Request Review</button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>&copy; 2026 Hermela Ashenafi Assefa. All rights reserved.</p></footer>
+    <script>
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>

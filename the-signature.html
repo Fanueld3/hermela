@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Signature | Hermela Ashenafi Assefa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.29/dist/lenis.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-obsidian: #0B0B0B;
+            --color-graphite: #1A1A1A;
+            --color-optical-white: #F5F5F0;
+            --color-accent-gold: #D4AF37;
+        }
+        body {
+            background-color: var(--color-obsidian);
+            color: var(--color-optical-white);
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+        }
+        .nav-floating {
+            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 1000; display: flex; gap: 1.5rem;
+            background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 245, 240, 0.1); border-radius: 999px; padding: 0.75rem 1.5rem;
+        }
+        .hero-section {
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 4rem 1.5rem; text-align: center;
+        }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .signature-content {
+            padding: 6rem 1.5rem; max-width: 1000px; margin: 0 auto;
+        }
+        .attribute-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .attribute-card {
+            background: rgba(26, 26, 26, 0.5); border: 1px solid rgba(245, 245, 240, 0.1);
+            border-radius: 12px; padding: 2rem; text-align: center;
+        }
+        .attribute-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: var(--color-accent-gold); }
+        .attribute-desc { color: rgba(245, 245, 240, 0.7); line-height: 1.6; }
+        .footer { text-align: center; padding: 3rem 1.5rem; color: rgba(245, 245, 240, 0.6); }
+    </style>
+</head>
+<body>
+    <nav class="nav-floating">
+        <a href="index.html" style="text-decoration: none; color: var(--color-optical-white);">Home</a>
+        <a href="the-signature.html" style="text-decoration: none; color: var(--color-optical-white);">Signature</a>
+    </nav>
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">The Signature</h1>
+            <p style="font-size: 1.2rem; color: rgba(245, 245, 240, 0.8);">Unique attributes, rituals, and personality essence</p>
+        </div>
+    </section>
+    <section class="signature-content">
+        <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center;">Core Attributes</h2>
+        <div class="attribute-grid">
+            <div class="attribute-card">
+                <h3 class="attribute-title">Humanistic Visionary</h3>
+                <p class="attribute-desc">Balancing human connection, mentorship, and impactful storytelling across tech and fashion.</p>
+            </div>
+            <div class="attribute-card">
+                <h3 class="attribute-title">Strategic Innovator</h3>
+                <p class="attribute-desc">Disrupting patterns, introducing novel concepts, and challenging industry assumptions.</p>
+            </div>
+            <div class="attribute-card">
+                <h3 class="attribute-title">Intellectual Alchemist</h3>
+                <p class="attribute-desc">Merging rigid computer science logic with fluid high-fashion elegance and creative expression.</p>
+            </div>
+            <div class="attribute-card">
+                <h3 class="attribute-title">Morning Ritual</h3>
+                <p class="attribute-desc">Dance and reflection to reconnect with self before stepping into the expectations of the world.</p>
+            </div>
+            <div class="attribute-card">
+                <h3 class="attribute-title">Sovereign Structure</h3>
+                <p class="attribute-desc">Power silhouettes, architectural presence, commanding moments that anchor a room.</p>
+            </div>
+            <div class="attribute-card">
+                <h3 class="attribute-title">Continuous Evolution</h3>
+                <p class="attribute-desc">Philosophy, psychology, neuroscience exploration in pursuit of unlimited human potential.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>&copy; 2026 Hermela Ashenafi Assefa. All rights reserved.</p></footer>
+    <script>
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>

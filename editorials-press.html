@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorials & Press | Hermela Ashenafi Assefa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.29/dist/lenis.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-obsidian: #0B0B0B;
+            --color-graphite: #1A1A1A;
+            --color-optical-white: #F5F5F0;
+            --color-accent-gold: #D4AF37;
+        }
+        body {
+            background-color: var(--color-obsidian);
+            color: var(--color-optical-white);
+            font-family: 'Inter', sans-serif; overflow-x: hidden;
+        }
+        .nav-floating {
+            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 1000; display: flex; gap: 1.5rem;
+            background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px);
+            border: 1px solid rgba(245, 245, 240, 0.1); border-radius: 999px; padding: 0.75rem 1.5rem;
+        }
+        .nav-link { font-size: 0.875rem; color: var(--color-optical-white); text-decoration: none; }
+        .hero-section {
+            min-height: 100vh; display: flex; justify-content: center; align-items: center;
+            padding: 4rem 1.5rem; text-align: center;
+        }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
+        .editorial-grid {
+            padding: 6rem 1.5rem; display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; max-width: 1400px; margin: 0 auto;
+        }
+        .editorial-item {
+            border: 1px solid rgba(245, 245, 240, 0.1);
+            border-radius: 12px; overflow: hidden; background: rgba(26, 26, 26, 0.5);
+            transition: all 0.3s ease;
+        }
+        .editorial-item:hover { border-color: rgba(212, 175, 55, 0.3); }
+        .editorial-image { width: 100%; height: 300px; overflow: hidden; }
+        .editorial-image img { width: 100%; height: 100%; object-fit: cover; }
+        .editorial-content { padding: 2rem; }
+        .editorial-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .footer { text-align: center; padding: 3rem 1.5rem; color: rgba(245, 245, 240, 0.6); }
+    </style>
+</head>
+<body>
+    <nav class="nav-floating">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="editorials-press.html" class="nav-link">Press</a>
+    </nav>
+    <section class="hero-section">
+        <div>
+            <h1 class="hero-title">Editorials & Press</h1>
+            <p style="font-size: 1.2rem; color: rgba(245, 245, 240, 0.8);">Featured in international publications and media</p>
+        </div>
+    </section>
+    <section class="editorial-grid">
+        <div class="editorial-item">
+            <div class="editorial-image"><img src="https://images.unsplash.com/photo-1491230903926-e88faa27c99d?w=500&h=600&fit=crop" alt="Editorial"></div>
+            <div class="editorial-content">
+                <h3 class="editorial-title">Vogue Features</h3>
+                <p style="color: rgba(245, 245, 240, 0.6);">Editorial features and cover stories from international publications.</p>
+            </div>
+        </div>
+        <div class="editorial-item">
+            <div class="editorial-image"><img src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=500&h=600&fit=crop" alt="Press"></div>
+            <div class="editorial-content">
+                <h3 class="editorial-title">Press Coverage</h3>
+                <p style="color: rgba(245, 245, 240, 0.6);">Media appearances and press mentions documenting pageantry journey.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer"><p>&copy; 2026 Hermela Ashenafi Assefa. All rights reserved.</p></footer>
+    <script>
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>
