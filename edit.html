@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The Edit — Hermela's wardrobe commandments, fabric philosophy, styling rituals, and psychometric signature."
+    />
+    <title>The Edit | Hermela Ashenafi Assefa</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#0B0B0B',
+              graphite: '#1A1A1A',
+              mineral: '#23252B',
+              alabaster: '#EDEAE3',
+              optical: '#F5F5F4',
+              sovereign: '#BFA46F'
+            },
+            fontFamily: {
+              display: ['Fraunces', 'serif'],
+              sans: ['Inter', 'sans-serif']
+            },
+            boxShadow: {
+              glow: '0 0 0 1px rgba(245,245,244,0.12), 0 18px 60px rgba(0,0,0,0.45)'
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      :root {
+        --ease-power: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: radial-gradient(circle at 60% 0%, #23252b 0%, #0b0b0b 50%, #070707 100%);
+        font-family: 'Inter', sans-serif;
+        color: #EDEAE3;
+        overflow-x: hidden;
+      }
+
+      .wordmark {
+        letter-spacing: 0.07em;
+        font-family: 'Fraunces', serif;
+      }
+
+      .meta-kern {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      /* FILM GRAIN OVERLAY */
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        z-index: 60;
+        mix-blend-mode: soft-light;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" result="noise" /></filter><rect width="100" height="100" fill="rgba(255,255,255,0.5)" filter="url(%23noise)" /></svg>');
+        animation: drift 12s linear infinite;
+      }
+
+      @keyframes drift {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(100px, 100px); }
+      }
+
+      /* HYBRID KINETIC NAV */
+      .hybrid-nav {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+        background: linear-gradient(135deg, rgba(245, 245, 244, 0.11), rgba(255, 255, 255, 0.04));
+        border: 1px solid rgba(245, 245, 244, 0.15);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        will-change: transform;
+      }
+
+      .hybrid-nav a {
+        color: #EDEAE3;
+        text-decoration: none;
+        font-size: 0.875rem;
+        letter-spacing: 0.12em;
+        transition: color 0.3s ease;
+      }
+
+      .hybrid-nav a:hover {
+        color: #BFA46F;
+      }
+
+      /* CURTAIN MENU */
+      .curtain {
+        position: fixed;
+        inset: 0;
+        background: #0B0B0B;
+        z-index: 40;
+        clip-path: circle(0% at 92% 7%);
+        transition: clip-path 0.75s var(--ease-power);
+        pointer-events: none;
+      }
+
+      .curtain[data-open='true'] {
+        clip-path: circle(150% at 92% 7%);
+        pointer-events: auto;
+      }
+
+      .curtain-nav {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .curtain-nav a {
+        font-size: 2.5rem;
+        color: #EDEAE3;
+        text-decoration: none;
+        font-family: 'Fraunces', serif;
+        letter-spacing: 0.04em;
+        transition: color 0.3s ease;
+      }
+
+      .curtain-nav a:hover {
+        color: #BFA46F;
+      }
+
+      /* TEXT MASK & STAGGER */
+      .text-mask {
+        overflow: hidden;
+        display: inline-block;
+      }
+
+      .char {
+        display: inline-block;
+        transform: translateY(112%);
+        will-change: transform;
+      }
+
+      /* PARALLAX PLANES */
+      .parallax-plane {
+        will-change: transform, filter;
+      }
+
+      .parallax-bg {
+        transform-origin: center;
+      }
+
+      /* MAGNETIC BUTTON */
+      .mag-button {
+        position: relative;
+        cursor: pointer;
+        transition: all 0.3s var(--ease-power);
+        will-change: transform;
+      }
+
+      .mag-button:hover {
+        color: #BFA46F;
+        transform: scale(1.05);
+      }
+
+      /* PERSPECTIVE CARD */
+      .perspective-card {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        will-change: transform;
+      }
+
+      .perspective-card-inner {
+        transform-style: preserve-3d;
+        position: relative;
+        transition: transform 0.6s var(--ease-power);
+      }
+
+      .specular {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .perspective-card:hover .specular {
+        opacity: 1;
+      }
+
+      /* SCROLL VELOCITY SKEW */
+      .skew-container {
+        will-change: transform;
+      }
+
+      /* REDUCED MOTION SUPPORT */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+
+        .grain {
+          animation: none;
+        }
+
+        .char {
+          transform: translateY(0) !important;
+        }
+
+        .parallax-plane {
+          transform: none !important;
+        }
+      }
+
+      /* STACKING SECTIONS */
+      .stack-section {
+        position: sticky;
+        top: 0;
+        will-change: transform;
+      }
+
+      /* WARDROBE RAIL */
+      .wardrobe-rail {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding: 2rem;
+        scroll-behavior: smooth;
+      }
+
+      .wardrobe-item {
+        flex: 0 0 280px;
+        scroll-snap-align: start;
+        background: rgba(35, 37, 43, 0.6);
+        border: 1px solid rgba(245, 245, 244, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        backdrop-filter: blur(8px);
+        transition: all 0.4s var(--ease-power);
+      }
+
+      .wardrobe-item:hover {
+        border-color: rgba(191, 164, 111, 0.4);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      .wardrobe-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .wardrobe-item-text {
+        padding: 1.5rem;
+      }
+
+      /* COMMANDMENTS STACK */
+      .commandments-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .commandment-card {
+        position: sticky;
+        top: 2rem;
+        background: linear-gradient(135deg, rgba(35, 37, 43, 0.8), rgba(23, 25, 32, 0.6));
+        border: 1px solid rgba(245, 245, 244, 0.12);
+        border-radius: 16px;
+        padding: 3rem;
+        backdrop-filter: blur(12px);
+        will-change: transform, box-shadow;
+        transition: all 0.4s var(--ease-power);
+      }
+
+      .commandment-card:hover {
+        border-color: rgba(191, 164, 111, 0.3);
+        box-shadow: 0 20px 60px rgba(191, 164, 111, 0.1);
+        transform: translateY(-4px);
+      }
+
+      .commandment-number {
+        font-size: 3rem;
+        font-family: 'Fraunces', serif;
+        font-weight: 300;
+        color: #BFA46F;
+        margin-bottom: 1rem;
+      }
+
+      /* CURSOR MORPHING */
+      .cursor-custom {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #BFA46F;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 100;
+        opacity: 0;
+        will-change: transform, width, height;
+      }
+
+      /* FABRIC SWATCH GRID */
+      .fabric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .fabric-swatch {
+        aspect-ratio: 1;
+        background: rgba(35, 37, 43, 0.7);
+        border: 1px solid rgba(245, 245, 244, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s var(--ease-power);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .fabric-swatch:hover {
+        border-color: rgba(191, 164, 111, 0.4);
+        background: rgba(45, 47, 53, 0.9);
+        transform: rotateY(8deg) rotateX(-8deg);
+      }
+
+      .fabric-dot {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+      }
+
+      /* PRICING / STATS ODOMETER */
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-family: 'Fraunces', serif;
+        font-variant-numeric: tabular-nums;
+        color: #BFA46F;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.875rem;
+        letter-spacing: 0.08em;
+        color: #BFAA95;
+        margin-top: 0.5rem;
+      }
+
+      /* HERO DEPTH LAYERS */
+      .hero-bg-deep {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        will-change: transform;
+      }
+
+      .hero-bg-mid {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        will-change: transform;
+        filter: blur(2px);
+      }
+
+      .hero-bg-fore {
+        position: relative;
+        z-index: 0;
+      }
+
+      /* SMOOTH LINK TRANSITIONS */
+      a {
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #BFA46F;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- GRAIN OVERLAY -->
+    <div class="grain"></div>
+
+    <!-- HYBRID KINETIC NAV -->
+    <nav class="hybrid-nav" id="hybridNav">
+      <a href="index.html" class="mag-button">Home</a>
+      <a href="gallery.html" class="mag-button">Gallery</a>
+      <button id="exploreBtn" class="mag-button" aria-label="Menu">Explore</button>
+    </nav>
+
+    <!-- CURTAIN MENU -->
+    <div class="curtain" id="curtainMenu" data-open="false">
+      <nav class="curtain-nav">
+        <a href="index.html">Prologue</a>
+        <a href="about.html">The Biome</a>
+        <a href="pageantry.html">The Crown</a>
+        <a href="intellect.html">The Architect</a>
+        <a href="philosophy.html">The Mind</a>
+        <a href="gallery.html">The Muse</a>
+        <a href="edit.html" class="text-sovereign">The Edit</a>
+        <a href="academy.html">The Academy</a>
+        <a href="ambassadorship.html">The Mabassador</a>
+      </nav>
+    </div>
+
+    <!-- HERO SECTION: THE EDIT -->
+    <section id="heroSection" class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-32 pb-16 overflow-hidden">
+      <!-- DEPTH PARALLAX LAYERS -->
+      <div class="hero-bg-deep parallax-plane" style="background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'); background-size: cover; background-position: center;"></div>
+      <div class="hero-bg-mid parallax-plane" style="background: url('https://images.unsplash.com/photo-1515527798519-1ad146dafec9?w=1600&q=80'); background-size: cover; background-position: center;"></div>
+
+      <div class="hero-bg-fore relative z-10 text-center max-w-4xl">
+        <h1 class="wordmark text-6xl md:text-7xl leading-tight mb-8 text-optical">
+          <span class="text-mask">
+            <span class="char">T</span>
+            <span class="char">h</span>
+            <span class="char">e</span>
+            <span class="char"> </span>
+            <span class="char">E</span>
+            <span class="char">d</span>
+            <span class="char">i</span>
+            <span class="char">t</span>
+          </span>
+        </h1>
+        <p class="text-xl md:text-2xl text-alabaster font-light leading-relaxed mb-12">
+          Every outfit tells a story about who I am. My clothing is an extension of my personality, not just something I wear.
+        </p>
+        <button class="mag-button px-8 py-3 border border-sovereign text-sovereign hover:bg-sovereign hover:text-graphite transition-all duration-500 rounded-full">
+          Explore the Commandments
+        </button>
+      </div>
+    </section>
+
+    <!-- WARDROBE COMMANDMENTS: STICKY STACKING -->
+    <section id="commandmentsSection" class="relative py-32 px-6">
+      <h2 class="wordmark text-5xl md:text-6xl text-optical mb-20 text-center">
+        <span class="text-mask">
+          <span class="char">W</span>
+          <span class="char">a</span>
+          <span class="char">r</span>
+          <span class="char">d</span>
+          <span class="char">r</span>
+          <span class="char">o</span>
+          <span class="char">b</span>
+          <span class="char">e</span>
+          <span class="char"> </span>
+          <span class="char">C</span>
+          <span class="char">o</span>
+          <span class="char">m</span>
+          <span class="char">m</span>
+          <span class="char">a</span>
+          <span class="char">n</span>
+          <span class="char">d</span>
+          <span class="char">m</span>
+          <span class="char">e</span>
+          <span class="char">n</span>
+          <span class="char">t</span>
+          <span class="char">s</span>
+        </span>
+      </h2>
+
+      <div class="max-w-5xl mx-auto commandments-stack">
+        <!-- COMMANDMENT 1 -->
+        <div class="commandment-card" data-index="0">
+          <div class="commandment-number">01</div>
+          <h3 class="wordmark text-3xl md:text-4xl text-optical mb-4">
+            Story Over Silhouette
+          </h3>
+          <p class="text-lg text-alabaster mb-6 leading-relaxed">
+            Every piece I wear carries intention. Whether it's a power shoulder or a fluid drape, the garment must communicate something true about where I am in my journey. Clothing is armor, art, and autobiography all at once.
+          </p>
+          <p class="text-sm text-BFAA95 meta-kern">
+            PRINCIPLE: Function + Narrative
+          </p>
+        </div>
+
+        <!-- COMMANDMENT 2 -->
+        <div class="commandment-card" data-index="1">
+          <div class="commandment-number">02</div>
+          <h3 class="wordmark text-3xl md:text-4xl text-optical mb-4">
+            Intention & Whimsy
+          </h3>
+          <p class="text-lg text-alabaster mb-6 leading-relaxed">
+            Dress with precision, but never lose the playfulness. Every outfit should have a spark—whether it's an unexpected accessory, a textural juxtaposition, or a color that shouldn't work but absolutely does. Style without joy is just conformity.
+          </p>
+          <p class="text-sm text-BFAA95 meta-kern">
+            PRINCIPLE: Discipline Meets Delight
+          </p>
+        </div>
+
+        <!-- COMMANDMENT 3 -->
+        <div class="commandment-card" data-index="2">
+          <div class="commandment-number">03</div>
+          <h3 class="wordmark text-3xl md:text-4xl text-optical mb-4">
+            Know Thyself, Wear Thyself
+          </h3>
+          <p class="text-lg text-alabaster mb-6 leading-relaxed">
+            Understand the silhouettes, fabrics, and colors that complement your body and complexion. Then wear them with absolute confidence. This isn't vanity—it's self-knowledge. I know what works for me because I've earned that understanding through intention and reflection.
+          </p>
+          <p class="text-sm text-BFAA95 meta-kern">
+            PRINCIPLE: Sovereignty Through Self-Awareness
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FABRIC PHILOSOPHY: PERSPECTIVE CARDS -->
+    <section id="fabricSection" class="relative py-32 px-6 bg-gradient-to-b from-transparent via-mineral/10 to-transparent">
+      <h2 class="wordmark text-5xl md:text-6xl text-optical mb-8 text-center">
+        <span class="text-mask">
+          <span class="char">F</span>
+          <span class="char">a</span>
+          <span class="char">b</span>
+          <span class="char">r</span>
+          <span class="char">i</span>
+          <span class="char">c</span>
+          <span class="char"> </span>
+          <span class="char">P</span>
+          <span class="char">h</span>
+          <span class="char">i</span>
+          <span class="char">l</span>
+          <span class="char">o</span>
+          <span class="char">s</span>
+          <span class="char">o</span>
+          <span class="char">p</span>
+          <span class="char">h</span>
+          <span class="char">y</span>
+        </span>
+      </h2>
+      <p class="text-xl text-alabaster text-center mb-16 max-w-3xl mx-auto">
+        A curated juxtaposition of structural and fluid elements. Never one extreme—always both.
+      </p>
+
+      <div class="fabric-grid max-w-6xl mx-auto">
+        <!-- RIGID & DEFINED -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Rigid & Defined</h3>
+          <p class="text-sm text-BFAA95">Heavy wools, crisp poplins, structured leather</p>
+          <div class="specular"></div>
+        </div>
+
+        <!-- FLUID & KINETIC -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #6b5d4f 0%, #8b7d6f 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Fluid & Kinetic</h3>
+          <p class="text-sm text-BFAA95">Matte silk, heavy crepe, soft linen, fine cashmere</p>
+          <div class="specular"></div>
+        </div>
+
+        <!-- TEXTURAL CONTRAST -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #3a3a3a 0%, #6b7d8f 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Textural Contrast</h3>
+          <p class="text-sm text-BFAA95">Leather meets silk, wool meets sequin, structure meets flow</p>
+          <div class="specular"></div>
+        </div>
+
+        <!-- SOVEREIGNTY STRUCTURE -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Sovereign Structure</h3>
+          <p class="text-sm text-BFAA95">Power silhouettes, architectural shoulders, command presence</p>
+          <div class="specular"></div>
+        </div>
+
+        <!-- ORGANIC GRACE -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #7a6f5e 0%, #9a8f7e 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Organic Grace</h3>
+          <p class="text-sm text-BFAA95">Asymmetrical drape, natural movement, heritage textures</p>
+          <div class="specular"></div>
+        </div>
+
+        <!-- OPTICAL CONTRAST -->
+        <div class="fabric-swatch perspective-card">
+          <div class="fabric-dot" style="background: linear-gradient(135deg, #e8e8e8 0%, #fafafa 100%);"></div>
+          <h3 class="wordmark text-lg text-optical mb-2">Optical Contrast</h3>
+          <p class="text-sm text-BFAA95">Black meets white, shadow meets light, absolute clarity</p>
+          <div class="specular"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STYLING RITUALS: PINNED HORIZONTAL GALLERY -->
+    <section id="ritualsSection" class="relative py-32">
+      <h2 class="wordmark text-5xl md:text-6xl text-optical mb-8 text-center px-6">
+        <span class="text-mask">
+          <span class="char">S</span>
+          <span class="char">t</span>
+          <span class="char">y</span>
+          <span class="char">l</span>
+          <span class="char">i</span>
+          <span class="char">n</span>
+          <span class="char">g</span>
+          <span class="char"> </span>
+          <span class="char">R</span>
+          <span class="char">i</span>
+          <span class="char">t</span>
+          <span class="char">u</span>
+          <span class="char">a</span>
+          <span class="char">l</span>
+          <span class="char">s</span>
+        </span>
+      </h2>
+
+      <div class="wardrobe-rail" id="ritualsRail">
+        <!-- RITUAL 1 -->
+        <div class="wardrobe-item skew-container">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Morning ritual" />
+          <div class="wardrobe-item-text">
+            <h3 class="wordmark text-xl text-optical mb-2">The Morning Activation</h3>
+            <p class="text-sm text-BFAA95 mb-3">
+              Before dressing, I move. Dance, stretch, breathe. This centers me and reminds me that my body is the ultimate canvas. The outfit follows the energy, not the other way around.
+            </p>
+            <p class="text-xs meta-kern text-alabaster">Ritual: 20–30 min movement practice</p>
+          </div>
+        </div>
+
+        <!-- RITUAL 2 -->
+        <div class="wardrobe-item skew-container">
+          <img src="https://images.unsplash.com/photo-1506629082632-5b940e169b0d?w=400&q=80" alt="Intention setting" />
+          <div class="wardrobe-item-text">
+            <h3 class="wordmark text-xl text-optical mb-2">Intention Setting</h3>
+            <p class="text-sm text-BFAA95 mb-3">
+              I ask myself: "What story do I want to tell today?" This frames the choice. Am I stepping into strength, vulnerability, playfulness, or quiet contemplation?
+            </p>
+            <p class="text-xs meta-kern text-alabaster">Ritual: 5–10 min reflection</p>
+          </div>
+        </div>
+
+        <!-- RITUAL 3 -->
+        <div class="wardrobe-item skew-container">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Mirror moment" />
+          <div class="wardrobe-item-text">
+            <h3 class="wordmark text-xl text-optical mb-2">The Mirror Moment</h3>
+            <p class="text-sm text-BFAA95 mb-3">
+              I check three things: silhouette accuracy, color harmony, and "the spark"—that indefinable feeling that the outfit has found its voice.
+            </p>
+            <p class="text-xs meta-kern text-alabaster">Ritual: 3–5 min final check</p>
+          </div>
+        </div>
+
+        <!-- RITUAL 4 -->
+        <div class="wardrobe-item skew-container">
+          <img src="https://images.unsplash.com/photo-1566702633481-fd63360f8fec?w=400&q=80" alt="Accessory harmony" />
+          <div class="wardrobe-item-text">
+            <h3 class="wordmark text-xl text-optical mb-2">Accessory Alchemy</h3>
+            <p class="text-sm text-BFAA95 mb-3">
+              Jewelry, shoes, bags—each piece must either echo or contrast the outfit's narrative. Never filler; every element is intentional.
+            </p>
+            <p class="text-xs meta-kern text-alabaster">Ritual: The "finishing touch" moment</p>
+          </div>
+        </div>
+
+        <!-- RITUAL 5 -->
+        <div class="wardrobe-item skew-container">
+          <img src="https://images.unsplash.com/photo-1515527798519-1ad146dafec9?w=400&q=80" alt="Confidence check" />
+          <div class="wardrobe-item-text">
+            <h3 class="wordmark text-xl text-optical mb-2">Confidence Amplification</h3>
+            <p class="text-sm text-BFAA95 mb-3">
+              The final step: I step into the outfit as if I'm stepping into my own power. No apologies. No second-guessing. Sovereignty is a choice I make in that mirror moment.
+            </p>
+            <p class="text-xs meta-kern text-alabaster">Ritual: The final affirmation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PSYCHOMETRIC SIGNATURE: STATS WITH ODOMETER -->
+    <section id="psychometricSection" class="relative py-32 px-6">
+      <h2 class="wordmark text-5xl md:text-6xl text-optical mb-4 text-center">
+        <span class="text-mask">
+          <span class="char">P</span>
+          <span class="char">s</span>
+          <span class="char">y</span>
+          <span class="char">c</span>
+          <span class="char">h</span>
+          <span class="char">o</span>
+          <span class="char">m</span>
+          <span class="char">e</span>
+          <span class="char">t</span>
+          <span class="char">r</span>
+          <span class="char">i</span>
+          <span class="char">c</span>
+          <span class="char"> </span>
+          <span class="char">S</span>
+          <span class="char">i</span>
+          <span class="char">g</span>
+          <span class="char">n</span>
+          <span class="char">a</span>
+          <span class="char">t</span>
+          <span class="char">u</span>
+          <span class="char">r</span>
+          <span class="char">e</span>
+        </span>
+      </h2>
+      <p class="text-center text-alabaster mb-16 max-w-3xl mx-auto">
+        From the Hermela Brand Persona Analysis: Humanistic Visionary + Strategic Innovation
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto mb-20">
+        <!-- STAT 1 -->
+        <div class="stat-item">
+          <div class="stat-number" id="stat1">100</div>
+          <div class="stat-label">% Intentional Dressing</div>
+        </div>
+
+        <!-- STAT 2 -->
+        <div class="stat-item">
+          <div class="stat-number" id="stat2">3</div>
+          <div class="stat-label">Core Wardrobe Commandments</div>
+        </div>
+
+        <!-- STAT 3 -->
+        <div class="stat-item">
+          <div class="stat-number" id="stat3">∞</div>
+          <div class="stat-label">Possible Narratives Per Outfit</div>
+        </div>
+
+        <!-- STAT 4 -->
+        <div class="stat-item">
+          <div class="stat-number" id="stat4">1</div>
+          <div class="stat-label">True Beauty Standard</div>
+        </div>
+      </div>
+
+      <!-- ARCHETYPE BREAKDOWN -->
+      <div class="max-w-4xl mx-auto bg-gradient-to-b from-mineral/20 to-transparent border border-sovereign/20 rounded-2xl p-8 md:p-12 backdrop-filter backdrop-blur-sm">
+        <h3 class="wordmark text-3xl text-optical mb-6">The Intellectual Alchemist</h3>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h4 class="text-lg text-sovereign mb-3 meta-kern">Leadership Language</h4>
+            <p class="text-alabaster leading-relaxed">
+              Strategic Innovation. I refuse fixed categories and disrupt standard patterns by introducing novel concepts and challenging assumptions in both technology and fashion.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-lg text-sovereign mb-3 meta-kern">Influence Purpose</h4>
+            <p class="text-alabaster leading-relaxed">
+              To empower others, challenge perspectives, and create meaningful change. Style is a vessel for impact—every outfit communicates agency.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-lg text-sovereign mb-3 meta-kern">Beauty Philosophy</h4>
+            <p class="text-alabaster leading-relaxed">
+              Beauty is not a fixed standard. True beauty is about embracing individuality, having the courage to define your own, and celebrating unique features and cultures.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="text-lg text-sovereign mb-3 meta-kern">Aesthetic Alignment</h4>
+            <p class="text-alabaster leading-relaxed">
+              Sovereign Structure: Power silhouettes, architectural shoulders, and bold pieces that anchor a room. My clothing anchors my presence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFLUENCE ICONS & STYLE REFERENCES -->
+    <section id="influenceSection" class="relative py-32 px-6">
+      <h2 class="wordmark text-5xl md:text-6xl text-optical mb-16 text-center">
+        <span class="text-mask">
+          <span class="char">I</span>
+          <span class="char">n</span>
+          <span class="char">f</span>
+          <span class="char">l</span>
+          <span class="char">u</span>
+          <span class="char">e</span>
+          <span class="char">n</span>
+          <span class="char">c</span>
+          <span class="char">e</span>
+        </span>
+      </h2>
+
+      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- MAYA ANGELOU -->
+        <div class="bg-gradient-to-br from-mineral/30 to-transparent border border-sovereign/20 rounded-xl p-8 backdrop-blur-sm">
+          <h3 class="wordmark text-2xl text-optical mb-4">Maya Angelou</h3>
+          <p class="text-sm text-alabaster mb-4">
+            "There is no greater agony than bearing an untold story inside you."
+          </p>
+          <p class="text-xs text-BFAA95 leading-relaxed">
+            Her philosophy teaches that our experiences become our voice. My wardrobe tells the stories I refuse to leave untold.
+          </p>
+        </div>
+
+        <!-- CLEOPATRA -->
+        <div class="bg-gradient-to-br from-mineral/30 to-transparent border border-sovereign/20 rounded-xl p-8 backdrop-blur-sm">
+          <h3 class="wordmark text-2xl text-optical mb-4">Cleopatra</h3>
+          <p class="text-sm text-alabaster mb-4">
+            The harmony between femininity and intelligence.
+          </p>
+          <p class="text-xs text-BFAA95 leading-relaxed">
+            She wore power like silk and commanded rooms with intellect. This duality—beauty and brilliance—is embedded in every outfit I choose.
+          </p>
+        </div>
+
+        <!-- CARL JUNG -->
+        <div class="bg-gradient-to-br from-mineral/30 to-transparent border border-sovereign/20 rounded-xl p-8 backdrop-blur-sm">
+          <h3 class="wordmark text-2xl text-optical mb-4">Carl Jung</h3>
+          <p class="text-sm text-alabaster mb-4">
+            "Until you make the unconscious conscious, it will direct your life."
+          </p>
+          <p class="text-xs text-BFAA95 leading-relaxed">
+            His work on self-awareness guides my styling practice. Dressing intentionally is an act of bringing the unconscious into the light.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA TO ACADEMY -->
+    <section id="ctaSection" class="relative py-32 px-6 text-center">
+      <h2 class="wordmark text-4xl md:text-5xl text-optical mb-6">
+        Ready to Master Your Presence?
+      </h2>
+      <p class="text-lg text-alabaster mb-10 max-w-2xl mx-auto">
+        Join the Academy to learn these principles directly, unlock your unique style narrative, and step into your sovereign presence.
+      </p>
+      <a href="academy.html" class="mag-button inline-block px-12 py-4 border-2 border-sovereign text-sovereign hover:bg-sovereign hover:text-graphite transition-all duration-500 rounded-full wordmark text-lg">
+        Enter the Academy
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-mineral/40 py-16 px-6 text-center">
+      <p class="text-sm text-BFAA95 meta-kern">
+        © 2026 Hermela Ashenafi Assefa. All stories preserved.
+      </p>
+    </footer>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-custom" id="cursor"></div>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // LENIS SMOOTH SCROLL
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      // CURTAIN MENU TOGGLE
+      const exploreBtn = document.getElementById('exploreBtn');
+      const curtainMenu = document.getElementById('curtainMenu');
+
+      exploreBtn.addEventListener('click', () => {
+        const isOpen = curtainMenu.getAttribute('data-open') === 'true';
+        curtainMenu.setAttribute('data-open', !isOpen);
+      });
+
+      document.querySelectorAll('.curtain-nav a').forEach(link => {
+        link.addEventListener('click', () => {
+          curtainMenu.setAttribute('data-open', 'false');
+        });
+      });
+
+      // TEXT MASK REVEAL (PER-CHARACTER STAGGER)
+      function revealTextMask() {
+        document.querySelectorAll('.text-mask').forEach((mask) => {
+          const chars = mask.querySelectorAll('.char');
+          gsap.to(chars, {
+            scrollTrigger: {
+              trigger: mask,
+              start: 'top 80%',
+              end: 'top 60%',
+              scrub: 0.5,
+              markers: false,
+            },
+            y: 0,
+            stagger: 0.03,
+            duration: 0.6,
+            ease: 'power3.out',
+          });
+        });
+      }
+
+      revealTextMask();
+
+      // MAGNETIC BUTTON BEHAVIOR
+      function initMagneticButtons() {
+        document.querySelectorAll('.mag-button').forEach((button) => {
+          button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const distance = Math.sqrt(x * x + y * y);
+            const radius = 50;
+
+            if (distance < radius) {
+              const strength = (1 - distance / radius) * 0.15;
+              gsap.to(button, {
+                x: x * strength,
+                y: y * strength,
+                duration: 0.2,
+              });
+            }
+          });
+
+          button.addEventListener('mouseleave', () => {
+            gsap.to(button, {
+              x: 0,
+              y: 0,
+              duration: 0.4,
+              ease: 'elastic.out(1, 0.5)',
+            });
+          });
+        });
+      }
+
+      initMagneticButtons();
+
+      // DEPTH PARALLAX (HERO SECTION)
+      function initDepthParallax() {
+        const heroBg = document.querySelectorAll('.parallax-plane');
+        heroBg.forEach((plane, index) => {
+          gsap.to(plane, {
+            scrollTrigger: {
+              trigger: '#heroSection',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: 1,
+              markers: false,
+            },
+            y: (index + 1) * 50,
+            ease: 'none',
+          });
+        });
+      }
+
+      initDepthParallax();
+
+      // PERSPECTIVE CARD TILT (FABRIC SWATCHES)
+      function initPerspectiveCards() {
+        document.querySelectorAll('.perspective-card').forEach((card) => {
+          const inner = card.querySelector('.perspective-card-inner') || card;
+
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) * 0.02;
+            const rotateY = (centerX - x) * 0.02;
+
+            gsap.to(inner, {
+              rotationX: rotateX,
+              rotationY: rotateY,
+              duration: 0.4,
+              ease: 'power2.out',
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(inner, {
+              rotationX: 0,
+              rotationY: 0,
+              duration: 0.6,
+              ease: 'elastic.out(1, 0.5)',
+            });
+          });
+        });
+      }
+
+      initPerspectiveCards();
+
+      // SCROLL VELOCITY SKEW (WARDROBE ITEMS)
+      let scrollVelocity = 0;
+      let lastScrollTop = 0;
+
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        scrollVelocity = scrollTop - lastScrollTop;
+        lastScrollTop = scrollTop;
+
+        document.querySelectorAll('.skew-container').forEach((item) => {
+          gsap.to(item, {
+            skewY: Math.min(scrollVelocity * 0.15, 3),
+            duration: 0.1,
+            ease: 'none',
+          });
+
+          gsap.to(item, {
+            skewY: 0,
+            duration: 0.8,
+            ease: 'power2.out',
+            delay: 0.1,
+          });
+        });
+      });
+
+      // STICKY SECTION STACKING (COMMANDMENTS)
+      function initStackingSections() {
+        const cards = document.querySelectorAll('.commandment-card');
+        cards.forEach((card, index) => {
+          gsap.set(card, { y: 0 });
+
+          ScrollTrigger.create({
+            trigger: card,
+            start: 'top center',
+            end: 'bottom center',
+            scrub: 1,
+            onUpdate: (self) => {
+              gsap.to(card, {
+                y: index * 20,
+                duration: 0.2,
+                overwrite: 'auto',
+              });
+            },
+          });
+        });
+      }
+
+      initStackingSections();
+
+      // ODOMETER COUNTERS
+      function animateCounter(element, target, duration = 2) {
+        const isInfinite = element.textContent.includes('∞');
+        if (isInfinite) return;
+
+        const start = 0;
+        gsap.to({ value: start }, {
+          value: target,
+          duration: duration,
+          ease: 'power2.out',
+          onUpdate: function () {
+            element.textContent = Math.round(this.targets()[0].value);
+          },
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 80%',
+            once: true,
+          },
+        });
+      }
+
+      const stat1 = document.getElementById('stat1');
+      const stat2 = document.getElementById('stat2');
+      const stat3 = document.getElementById('stat3');
+      const stat4 = document.getElementById('stat4');
+
+      animateCounter(stat1, 100);
+      animateCounter(stat2, 3);
+      animateCounter(stat4, 1);
+
+      // CUSTOM CURSOR MORPHING
+      const cursor = document.getElementById('cursor');
+      let mouseX = 0,
+        mouseY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      gsap.to(cursor, {
+        x: () => mouseX - 10,
+        y: () => mouseY - 10,
+        duration: 0.1,
+        ease: 'none',
+        repeat: -1,
+      });
+
+      // Show cursor on certain elements
+      document.addEventListener('mouseover', (e) => {
+        if (
+          e.target.matches('a, button, .mag-button, .perspective-card')
+        ) {
+          gsap.to(cursor, { opacity: 1, scale: 1.5, duration: 0.3 });
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        if (
+          e.target.matches('a, button, .mag-button, .perspective-card')
+        ) {
+          gsap.to(cursor, { opacity: 0, scale: 1, duration: 0.3 });
+        }
+      });
+
+      // Hide default cursor
+      document.body.style.cursor = 'none';
+
+      // REDUCED MOTION CHECK
+      const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      ).matches;
+
+      if (prefersReducedMotion) {
+        gsap.globalTimeline.timeScale(0.01);
+      }
+    </script>
+  </body>
+</html>
