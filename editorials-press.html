@@ -1,87 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Editorials & Press | Hermela Ashenafi Assefa — Featured in international publications and media coverage." />
     <title>Editorials & Press | Hermela Ashenafi Assefa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.29/dist/lenis.min.js"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --color-obsidian: #0B0B0B;
-            --color-graphite: #1A1A1A;
-            --color-optical-white: #F5F5F0;
-            --color-accent-gold: #D4AF37;
-        }
-        body {
-            background-color: var(--color-obsidian);
-            color: var(--color-optical-white);
-            font-family: 'Inter', sans-serif; overflow-x: hidden;
-        }
-        .nav-floating {
-            position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
-            z-index: 1000; display: flex; gap: 1.5rem;
-            background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px);
-            border: 1px solid rgba(245, 245, 240, 0.1); border-radius: 999px; padding: 0.75rem 1.5rem;
-        }
-        .nav-link { font-size: 0.875rem; color: var(--color-optical-white); text-decoration: none; }
-        .hero-section {
-            min-height: 100vh; display: flex; justify-content: center; align-items: center;
-            padding: 4rem 1.5rem; text-align: center;
-        }
-        .hero-title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; margin-bottom: 1.5rem; }
-        .editorial-grid {
-            padding: 6rem 1.5rem; display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem; max-width: 1400px; margin: 0 auto;
-        }
-        .editorial-item {
-            border: 1px solid rgba(245, 245, 240, 0.1);
-            border-radius: 12px; overflow: hidden; background: rgba(26, 26, 26, 0.5);
-            transition: all 0.3s ease;
-        }
-        .editorial-item:hover { border-color: rgba(212, 175, 55, 0.3); }
-        .editorial-image { width: 100%; height: 300px; overflow: hidden; }
-        .editorial-image img { width: 100%; height: 100%; object-fit: cover; }
-        .editorial-content { padding: 2rem; }
-        .editorial-title { font-size: 1.3rem; font-weight: 600; margin-bottom: 0.5rem; }
-        .footer { text-align: center; padding: 3rem 1.5rem; color: rgba(245, 245, 240, 0.6); }
-    </style>
-</head>
-<body>
-    <nav class="nav-floating">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="editorials-press.html" class="nav-link">Press</a>
-    </nav>
-    <section class="hero-section">
-        <div>
-            <h1 class="hero-title">Editorials & Press</h1>
-            <p style="font-size: 1.2rem; color: rgba(245, 245, 240, 0.8);">Featured in international publications and media</p>
-        </div>
-    </section>
-    <section class="editorial-grid">
-        <div class="editorial-item">
-            <div class="editorial-image"><img src="https://images.unsplash.com/photo-1491230903926-e88faa27c99d?w=500&h=600&fit=crop" alt="Editorial"></div>
-            <div class="editorial-content">
-                <h3 class="editorial-title">Vogue Features</h3>
-                <p style="color: rgba(245, 245, 240, 0.6);">Editorial features and cover stories from international publications.</p>
-            </div>
-        </div>
-        <div class="editorial-item">
-            <div class="editorial-image"><img src="https://images.unsplash.com/photo-1489749798305-4fea3ba63d60?w=500&h=600&fit=crop" alt="Press"></div>
-            <div class="editorial-content">
-                <h3 class="editorial-title">Press Coverage</h3>
-                <p style="color: rgba(245, 245, 240, 0.6);">Media appearances and press mentions documenting pageantry journey.</p>
-            </div>
-        </div>
-    </section>
-    <footer class="footer"><p>&copy; 2026 Hermela Ashenafi Assefa. All rights reserved.</p></footer>
+    <script src="https://unpkg.com/lenis@1.1.16/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>
-        const lenis = new Lenis({ duration: 1.2, smooth: true });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#0B0B0B',
+              graphite: '#1A1A1A',
+              mineral: '#23252B',
+              alabaster: '#EDEAE3',
+              optical: '#F5F5F4',
+              sovereign: '#BFA46F'
+            },
+            fontFamily: {
+              display: ['Fraunces', 'serif'],
+              sans: ['Inter', 'sans-serif']
+            },
+            boxShadow: {
+              glow: '0 0 0 1px rgba(245,245,244,0.12), 0 18px 60px rgba(0,0,0,0.45)'
+            }
+          }
+        }
+      };
     </script>
-</body>
+    <style>
+      :root {
+        --ease-power: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      body {
+        background: radial-gradient(circle at 70% 0%, #212329 0%, #0b0b0b 58%, #070707 100%);
+      }
+      .wordmark {
+        letter-spacing: 0.07em;
+      }
+      .meta-kern {
+        letter-spacing: 0.16em;
+      }
+      .hybrid-nav {
+        backdrop-filter: blur(14px);
+        background: linear-gradient(135deg, rgba(245, 245, 244, 0.11), rgba(255, 255, 255, 0.04));
+      }
+      .curtain {
+        clip-path: circle(0% at 92% 7%);
+        transition: clip-path 0.75s var(--ease-power);
+      }
+      .curtain[data-open='true'] {
+        clip-path: circle(150% at 92% 7%);
+      }
+      .grain {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        z-index: 60;
+        mix-blend-mode: soft-light;
+      }
+      .text-mask {
+        overflow: hidden;
+        display: inline-block;
+        padding-bottom: 0.08em;
+      }
+      .char {
+        display: inline-block;
+        transform: translateY(112%);
+        will-change: transform;
+      }
+      .parallax-plane {
+        will-change: transform, filter;
+      }
+      .magnetic-inner {
+        transition: transform 0.22s ease-out;
+        will-change: transform;
+      }
+      .media-card {
+        border: 1px solid rgba(245, 245, 244, 0.1);
+        background: linear-gradient(135deg, rgba(26, 26, 26, 0.3), rgba(35, 37, 43, 0.2));
+        backdrop-filter: blur(10px);
+        transition: all 0.35s var(--ease-power);
+      }
+      .media-card:hover {
+        border-color: rgba(191, 164, 111, 0.4);
+        background: linear-gradient(135deg, rgba(26, 26, 26, 0.5), rgba(35, 37, 43, 0.35));
+        transform: translateY(-6px);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .char {
+          transform: none !important;
+        }
+        .curtain {
+          transition: none !important;
+          clip-path: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-optical antialiased">
+    <svg class="grain" aria-hidden="true">
+      <filter id="noiseFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" seed="10" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#noiseFilter)"></rect>
+    </svg>
+    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+      <nav id="floatingNav" class="hybrid-nav mx-auto flex w-full max-w-5xl items-center justify-between rounded-full border border-optical/20 px-3 py-2 shadow-glow" aria-label="Primary">
+        <a href="index.html" class="wordmark text-xs font-medium uppercase text-optical/90 sm:text-sm">Hermela A. Assefa</a>
+        <div class="flex items-center gap-2">
+          <a href="editorials-press.html" class="meta-kern rounded-full px-3 py-2 text-[10px] uppercase text-sovereign">Press</a>
+          <button id="exploreToggle" data-open="false" class="meta-kern rounded-full border border-optical/30 bg-optical/10 px-4 py-2 text-[10px] uppercase text-optical transition hover:bg-optical hover:text-obsidian" type="button" aria-controls="curtainMenu" aria-expanded="false">Explore</button>
+        </div>
+      </nav>
+    </header>
+    <aside id="curtainMenu" data-open="false" class="curtain fixed inset-0 z-40 flex items-center justify-center bg-obsidian/95" aria-hidden="true">
+      <div class="w-full max-w-3xl px-8">
+        <p class="meta-kern mb-6 text-[10px] uppercase text-optical/55">Navigation</p>
+        <ul class="space-y-4">
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="index.html">The Prologue</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="about.html">The Biome</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="pageantry.html">The Crown</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="intellect.html">The Architect</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="philosophy.html">The Mind</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="gallery.html">The Muse</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="digitals.html">The Digitals</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="editorials-press.html">The Press</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="the-signature.html">The Signature</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="academy.html">The Academy</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="ambassadorship.html">The Ambassador</a></li>
+          <li><a class="text-2xl font-light text-optical/90 hover:text-sovereign" href="contact.html">The Connect</a></li>
+        </ul>
+      </div>
+    </aside>
+    <main id="app" data-lenis-container>
+      <section id="press-hero" class="relative min-h-[90svh] overflow-hidden border-b border-optical/10">
+        <div class="absolute inset-0 -z-10">
+          <img src="https://images.unsplash.com/photo-1491230903926-e88faa27c99d?auto=format&fit=crop&w=1800&q=80" alt="Editorial feature cover" class="parallax-plane absolute inset-0 h-full w-full object-cover opacity-35 blur-[1px]" data-depth="0.12" />
+          <img src="https://images.unsplash.com/photo-1502634613149-7f3242dc6f1d?auto=format&fit=crop&w=1800&q=80" alt="Magazine publication layout" class="parallax-plane absolute inset-0 h-full w-full object-cover opacity-25" data-depth="0.2" />
+        </div>
+        <div class="mx-auto flex min-h-[90svh] w-full max-w-6xl flex-col justify-end px-5 pb-12 pt-28 sm:px-8 sm:pb-16 lg:px-12">
+          <p class="meta-kern mb-4 text-[10px] uppercase text-alabaster/70">Editorial Features · Media Coverage · Press Mentions</p>
+          <h1 class="max-w-4xl font-display text-4xl leading-[0.95] text-optical sm:text-6xl lg:text-7xl" data-split>Featured across international publications and strategic media platforms.</h1>
+          <p class="mt-6 max-w-2xl text-sm leading-relaxed text-alabaster/80 sm:text-base">A curated archive of editorial features, press coverage, magazine appearances, and media mentions documenting her pageantry achievements, creative work, and intellectual leadership across fashion, technology, and cultural representation.</p>
+        </div>
+      </section>
+      <section id="press-coverage" class="border-b border-optical/10 px-5 py-16 sm:px-8 lg:px-12">
+        <div class="mx-auto w-full max-w-6xl">
+          <p class="meta-kern mb-8 text-[10px] uppercase text-alabaster/65">Featured In</p>
+          <div class="grid gap-6 sm:grid-cols-2">
+            <article class="media-card rounded-2xl p-6">
+              <p class="meta-kern text-[10px] uppercase text-alabaster/65">Magazine Features</p>
+              <h3 class="mt-3 font-display text-2xl text-optical">Editorial Profiles</h3>
+              <p class="mt-3 text-sm leading-relaxed text-alabaster/80">In-depth editorial features covering her journey as Computer Science graduate, project manager, model, and digital creator bridging technology and high-fashion aesthetics.</p>
+              <p class="mt-4 text-[10px] uppercase text-sovereign font-medium">International Publications</p>
+            </article>
+            <article class="media-card rounded-2xl p-6">
+              <p class="meta-kern text-[10px] uppercase text-alabaster/65">Press Releases</p>
+              <h3 class="mt-3 font-display text-2xl text-optical">Announcements</h3>
+              <p class="mt-3 text-sm leading-relaxed text-alabaster/80">Official press announcements documenting Miss Ethiopia 2026 (4th Runner-Up) and Miss Tourism Ethiopia triumphs, plus international pageantry representation in Nigeria.</p>
+              <p class="mt-4 text-[10px] uppercase text-sovereign font-medium">Pageantry & Tourism Boards</p>
+            </article>
+            <article class="media-card rounded-2xl p-6">
+              <p class="meta-kern text-[10px] uppercase text-alabaster/65">Television & Video</p>
+              <h3 class="mt-3 font-display text-2xl text-optical">Broadcast Media</h3>
+              <p class="mt-3 text-sm leading-relaxed text-alabaster/80">Television appearances, video interviews, and broadcast features discussing pageantry, leadership, personal philosophy, and the intersection of technology with creative expression.</p>
+              <p class="mt-4 text-[10px] uppercase text-sovereign font-medium">Interviews & Segments</p>
+            </article>
+            <article class="media-card rounded-2xl p-6">
+              <p class="meta-kern text-[10px] uppercase text-alabaster/65">Online Media</p>
+              <h3 class="mt-3 font-display text-2xl text-optical">Digital Platforms</h3>
+              <p class="mt-3 text-sm leading-relaxed text-alabaster/80">Digital media features, podcast interviews, online publications, and social media collaborations amplifying her voice as a thought leader and cultural ambassador.</p>
+              <p class="mt-4 text-[10px] uppercase text-sovereign font-medium">Multi-Platform Coverage</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="border-b border-optical/10 bg-mineral/35 px-5 py-16 sm:px-8 lg:px-12">
+        <div class="mx-auto w-full max-w-6xl rounded-3xl border border-optical/15 bg-mineral/45 p-6 sm:p-8 lg:p-10">
+          <p class="meta-kern mb-4 text-[10px] uppercase text-alabaster/70">Media Kit</p>
+          <h2 class="font-display text-3xl leading-tight text-optical sm:text-4xl" data-split>Press materials, high-resolution media assets, and editorial guidelines available for qualified journalists and media partners.</h2>
+          <p class="mt-5 max-w-4xl text-sm leading-relaxed text-alabaster/80 sm:text-base">For media inquiries, interview requests, or feature collaboration, please use the contact portal. All press materials include biography, photography archive, and official statement on representation and values.</p>
+        </div>
+      </section>
+    </main>
+    <footer class="border-t border-optical/10 px-5 py-8 sm:px-8 lg:px-12">
+      <div class="mx-auto flex w-full max-w-6xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-xs text-alabaster/60">© 2026 Hermela Ashenafi Assefa</p>
+        <p class="meta-kern text-[10px] uppercase text-alabaster/50">The Press · Editorial & Media Archive</p>
+      </div>
+    </footer>
+    <script>
+      (() => {
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const exploreToggle = document.getElementById('exploreToggle');
+        const curtainMenu = document.getElementById('curtainMenu');
+        function setMenuState(isOpen) {
+          curtainMenu.setAttribute('data-open', String(isOpen));
+          curtainMenu.setAttribute('aria-hidden', String(!isOpen));
+          exploreToggle.setAttribute('aria-expanded', String(isOpen));
+          exploreToggle.setAttribute('data-open', String(isOpen));
+          document.body.classList.toggle('overflow-hidden', isOpen);
+        }
+        exploreToggle.addEventListener('click', () => {
+          const open = exploreToggle.getAttribute('data-open') === 'true';
+          setMenuState(!open);
+        });
+        curtainMenu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => setMenuState(false));
+        });
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') setMenuState(false);
+        });
+        if (reduceMotion) return;
+        const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.95, smoothWheel: true, normalizeWheel: true });
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on('scroll', ScrollTrigger.update);
+        document.querySelectorAll('[data-split]').forEach((element) => {
+          const text = element.textContent.trim();
+          element.innerHTML = '';
+          [...text].forEach((char) => {
+            const mask = document.createElement('span');
+            mask.className = 'text-mask';
+            const inner = document.createElement('span');
+            inner.className = 'char';
+            inner.textContent = char === ' ' ? '\u00A0' : char;
+            mask.appendChild(inner);
+            element.appendChild(mask);
+          });
+        });
+        gsap.to('.char', { yPercent: 0, duration: 1.05, ease: 'expo.out', stagger: 0.03, delay: 0.12 });
+        document.querySelectorAll('.parallax-plane').forEach((plane) => {
+          const depth = Number(plane.getAttribute('data-depth') || 0.15);
+          gsap.to(plane, {
+            yPercent: depth * 80,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '#press-hero',
+              start: 'top top',
+              end: 'bottom top',
+              scrub: true
+            }
+          });
+        });
+        const floatingNav = document.getElementById('floatingNav');
+        let lastY = window.scrollY;
+        let lastTime = performance.now();
+        function updateNavVelocity() {
+          const now = performance.now();
+          const dy = window.scrollY - lastY;
+          const dt = Math.max(1, now - lastTime);
+          const velocity = Math.min(1, Math.abs(dy / dt) * 3.2);
+          gsap.to(floatingNav, { y: Math.min(14, velocity * 14), scale: 1 - velocity * 0.03, duration: 0.35, ease: 'power3.out' });
+          lastY = window.scrollY;
+          lastTime = now;
+          requestAnimationFrame(updateNavVelocity);
+        }
+        requestAnimationFrame(updateNavVelocity);
+        document.querySelectorAll('[data-magnetic]').forEach((node) => {
+          const inner = node.querySelector('.magnetic-inner');
+          if (!inner) return;
+          node.addEventListener('mousemove', (e) => {
+            const rect = node.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const tx = gsap.utils.clamp(-10, 10, x * 0.2);
+            const ty = gsap.utils.clamp(-8, 8, y * 0.2);
+            gsap.to(inner, { x: tx, y: ty, duration: 0.24, ease: 'power3.out' });
+          });
+          node.addEventListener('mouseleave', () => {
+            gsap.to(inner, { x: 0, y: 0, duration: 0.38, ease: 'expo.out' });
+          });
+        });
+      })();
+    </script>
+  </body>
 </html>
